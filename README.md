@@ -38,7 +38,7 @@ For our study, we only utilize the one dataset mentioned in the above sections a
 # Data Transformation
 The dataset being used has columns with categorical values which need to be transformed to be more digestible for machine learning algorithms. Additionally, scaling of features may help in smoother computations by machine learning models. Furthermore, the dataset in consideration is imbalanced (i.e. the class label to be predicted has an uneven distribution). Therefore, the dataset needs to be balanced for appropriate classification. For this task, we used the SMOTE technique to balance the dataset by oversampling minority classes on the basis of the K-Nearest Neighbours algorithm.
 
-```{
+```
 # Label Encoding - Convert categorical values to integers for computation
 categorical_cols = ['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status']
 label_encoder = LabelEncoder()
@@ -59,14 +59,12 @@ smo = SMOTE()
 X_res, y_res = smo.fit_resample(X_train, y_train.ravel())
 print("After (label '1'):", sum(y_res == 1))
 print("After (label '0'):", sum(y_res == 0))
-}
 ```
 
 # Data Mining
 In our study, we have implemented the Ensemble Learning technique of bagging and boosting classifiers to reduce the variance and bias respectively. The algorithms used for bagging are Random Forest and Bagging Classifier (with Decision Trees as base estimator), while the algorithms used for boosting are AdaBoost and XGBoost. Furthermore, we also implemented a simpler machine learning model known as K-Nearest Neighbours algorithm for comparison with Ensemble Learning.
 
 ```
-{
 # Random Forest
 RF = RandomForestClassifier()
 RF.fit(X_train_scaled_1, y_train_new)
@@ -95,14 +93,12 @@ y_pred_XGB = XGB.predict(X_test_scaled_1)
 KNN = KNeighborsClassifier()
 KNN.fit(X_train_scaled_1, y_train_new)
 y_pred_KNN = KNN.predict(X_test_scaled_1)
-}
 ```
 
 # Optimization of Models
 The models mentioned above were not initialized with a set of hyper-parameters. Instead, we applied Grid Search to find the most optimal combination of hyper-parameters for each model.
 
 ```
-{
 def perform_grid_search(model, param_grid, X_train, y_train, X_test, y_test):
  GS = GridSearchCV(estimator=model, param_grid=param_grid, cv=3, scoring='accuracy', verbose=2, n_jobs=-1)
  GS.fit(X_train, y_train)
@@ -143,7 +139,6 @@ knn_param_grid = {
    'n_neighbors': [3, 5, 10],
    'weights': ['uniform', 'distance'],
    'algorithm': ['auto', 'ball_tree', 'kd_tree', 'brute']
-}
 }
 ```
 
