@@ -23,13 +23,17 @@ The dataset contains the following features:
 
 # Data Cleaning
 The dataset consists of missing values in the ‘bmi’ column. The missing values were filled with the mean of ‘bmi’ column values. Furthermore, the ‘id’ column was dropped from the dataframe as it possesses no value for our study.
+<br>
 *Remove irrelevant columns for further processing*
+<br>
 `df = df.drop(columns=['id'])`
 <br>
 *Check missing values*
+<br>
 `print(df.isna().any())`
 <br>
 *Fill missing values with mean*
+<br>
 `df['bmi'] = df['bmi'].fillna(df['bmi'].mean())`
 
 # Data Integration
