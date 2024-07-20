@@ -25,8 +25,10 @@ The dataset contains the following features:
 The dataset consists of missing values in the ‘bmi’ column. The missing values were filled with the mean of ‘bmi’ column values. Furthermore, the ‘id’ column was dropped from the dataframe as it possesses no value for our study.
 *Remove irrelevant columns for further processing*
 `df = df.drop(columns=['id'])`
+<br>
 *Check missing values*
 `print(df.isna().any())`
+<br>
 *Fill missing values with mean*
 `df['bmi'] = df['bmi'].fillna(df['bmi'].mean())`
 
@@ -36,8 +38,8 @@ For our study, we only utilize the one dataset mentioned in the above sections a
 # Data Transformation
 The dataset being used has columns with categorical values which need to be transformed to be more digestible for machine learning algorithms. Additionally, scaling of features may help in smoother computations by machine learning models. Furthermore, the dataset in consideration is imbalanced (i.e. the class label to be predicted has an uneven distribution). Therefore, the dataset needs to be balanced for appropriate classification. For this task, we used the SMOTE technique to balance the dataset by oversampling minority classes on the basis of the K-Nearest Neighbours algorithm.
 
-*Label Encoding - Convert categorical values to integers for computation*
 ```{
+# Label Encoding - Convert categorical values to integers for computation
 categorical_cols = ['gender', 'ever_married', 'work_type', 'Residence_type', 'smoking_status']
 label_encoder = LabelEncoder()
 for col in categorical_cols:
